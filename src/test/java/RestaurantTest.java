@@ -13,27 +13,25 @@ class RestaurantTest {
     Restaurant restaurant=new Restaurant("Balaji","Dindigul",LocalTime.of(6,30,30),LocalTime.of(20,30,30));
     @ExtendWith(MockitoExtension.class)
     //REFACTOR ALL THE REPEATED LINES OF CODE
-   // Restaurant restaurant1=new Restaurant("Balaji","Dindigul",LocalTime.of(6,30,30),LocalTime.of(20,30,30));
-
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>OPEN/CLOSED<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
-        //WRITE UNIT TEST CASE HERE
         //Since the method we want to mock is in the same class use spy
        LocalTime mocktime = LocalTime.of(10,30,30);
         Restaurant spiedRestaurant = Mockito.spy(restaurant);
         Mockito.when(spiedRestaurant.getCurrentTime()).thenReturn(mocktime);
-        boolean b = spiedRestaurant.isRestaurantOpen();
-        System.out.println(b);
-        Assertions.assertTrue(b);
+        Assertions.assertTrue(spiedRestaurant.isRestaurantOpen());
     }
 
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
-
+        LocalTime mocktime = LocalTime.of(21,30,30);
+        Restaurant spiedRestaurant = Mockito.spy(restaurant);
+        Mockito.when(spiedRestaurant.getCurrentTime()).thenReturn(mocktime);
+        Assertions.assertFalse(spiedRestaurant.isRestaurantOpen());
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -59,7 +57,6 @@ class RestaurantTest {
         restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
-
         int initialMenuSize = restaurant.getMenu().size();
         restaurant.removeFromMenu("Vegetable lasagne");
         assertEquals(initialMenuSize-1,restaurant.getMenu().size());
