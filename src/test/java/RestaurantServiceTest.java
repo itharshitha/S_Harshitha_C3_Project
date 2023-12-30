@@ -37,7 +37,7 @@ class RestaurantServiceTest {
         //WRITE UNIT TEST CASE HERE
         assertThrows(restaurantNotFoundException.class,()->{service.findRestaurantByName("Bakes");});
     }
-    //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 
