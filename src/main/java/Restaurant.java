@@ -59,8 +59,11 @@ public class Restaurant {
 
     }
     public int calculateOrderCost(ArrayList<String> selectedItems){
-        System.out.println("Calculates total cost");
         int calculatedTotalCost=0;
+        for(String itemName : selectedItems){
+            int price =findItemByName(itemName).getPrice();
+            calculatedTotalCost+=price;
+        }
         return calculatedTotalCost;
     }
 
