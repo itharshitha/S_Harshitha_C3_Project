@@ -58,6 +58,11 @@ public class Restaurant {
                 +"Menu:"+"\n"+getMenu());
 
     }
+    public int calculateOrderCost(ArrayList<String> selectedItems){
+        System.out.println("Calculates total cost");
+        int calculatedTotalCost=0;
+        return calculatedTotalCost;
+    }
 
     public String getName() {
         return name;
